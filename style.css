@@ -1,0 +1,788 @@
+/* Importando Fonte */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Css global custom */
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    list-style: none;
+}
+
+body {
+    background-color: var(--hamburguer-bg-color);
+    overflow-x: hidden;
+}
+
+:root {
+    --navbar-bg-color: #3F2305;
+    --hamburguer-bg-color: #F2EAD3;
+}
+
+/* ScroollBar Hidden */
+::-webkit-scrollbar {
+    width: 0;
+}
+
+/* Cell phone Responsive */
+@media (max-width: 450px) {
+    /* Navbar */
+    nav {
+        background-color: var(--navbar-bg-color);
+        padding: 20px 0px 10px 13px;
+        display: flex;
+    }
+
+    .navbar-ul {
+        display: flex;
+    }
+
+        /* Navbar hamburguer menu */
+    .hamb-menu {
+        height: 50px;
+        width: 40px;
+        margin-left: auto;
+        position: relative;
+        z-index: 3;
+    }
+
+    .hamb-menu span {
+        height: 5px;
+        width: 100%;
+        background-color: var(--hamburguer-bg-color);
+        border-radius: 25px;
+        position: absolute;
+        top: 50%;
+        left: 160px;
+        transform: translate(-50%, -50%);
+        transition: .3s ease;
+    }
+
+    .hamb-menu span:nth-child(1) {
+        top: 25%;
+    }
+
+    .hamb-menu span:nth-child(3) {
+        top: 75%;
+    }
+
+    .hamb-menu.active span {
+        background-color: var(--navbar-bg-color);
+    }
+
+    .hamb-menu.active span:nth-child(1) {
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .hamb-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamb-menu.active span:nth-child(3) {
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    .off-screen-menu {
+        background-color: var(--hamburguer-bg-color);
+        height: 100vh;
+        width: 100%;
+        max-width: 450px;
+        position: fixed;
+        top: 0;
+        right: -450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 3rem;
+        transition: .3s ease;
+        z-index: 1;
+    }
+
+    .off-screen-menu.active {
+        right: 0;
+    }
+
+    .off-screen-menu a {
+        text-decoration: none;
+        color: var(--navbar-bg-color);
+    }
+
+    .no-scroll {
+        overflow: hidden;
+    }
+
+    /* Main */
+        /* Information about film */
+    .title-main>img {
+        width: 400px;
+        padding: 10px;
+        z-index: -1;
+    }
+
+    .title-main p,
+    .cast span,
+    .reviews span {
+        text-align: center;
+        font-size: 160%;
+        margin-bottom: 20px;
+    }
+
+    .title-main span,
+    .about span,
+    .cast span,
+    .reviews span {
+        color: var(--navbar-bg-color);
+        font-weight: bolder;
+    }
+
+    .title-main .year {
+        color: #A4907C;
+    }
+
+    .about {
+        margin-bottom: 40px;
+    }
+
+    .about article,
+    .cast span,
+    .reviews span {
+        margin-bottom: 20px;
+        padding-left: 10px;
+    }
+
+    .synopsis p {
+        width: 357px;
+    }
+
+    /* Information film cast*/
+    .cast {
+        background-color: #DFD7BF;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 40px;
+    }
+
+    .cast button,
+    .reviews button {
+        height: 30px;
+        width: 90px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        background-color: var(--navbar-bg-color);
+        color: white;
+        margin-top: 20px;
+        font-size: 15px;
+        margin-left: 7px;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+        /* Card film cast*/
+    .card-carousel {
+        display: flex;
+        padding: 10px;
+        margin-left: 10px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 2em;
+    }
+
+    .card-content {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        transition: transform .3s ease-in-out;
+    }
+
+    .card-content span {
+        font-size: 115%;
+    }
+
+    .card-content .card-artist p {
+        text-align: center;
+    }
+
+        /* Review Information */
+    .reviews .header-reviews {
+        margin-bottom: 10px;
+    }
+
+    .card-review {
+        background-color: #DFD7BF;
+        margin-left: 14px;
+        padding-left: 13px;
+        width: 23em;
+        border-radius: 20px;
+        margin-bottom: 20px;
+    }
+
+    .card-people {
+        width: 340px;
+        padding-top: 10px;
+    }
+
+    .card-people .name {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .card-people .name span {
+        font-size: 110%;
+    }
+
+    .card-people .review-complement {
+        display: flex;
+    }
+
+    .review-complement .rating {
+        position: relative;
+        top: -10px;
+        padding-left: 40px;
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--navbar-bg-color);
+    }
+
+    .img-footer {
+        margin-bottom: 17px;
+        padding-top: 20px;
+        padding-left: 13px;
+    }
+
+    .info {
+        display: flex;
+        color: var(--hamburguer-bg-color);
+        padding-left: 13px;
+    }
+
+    .info li {
+        padding-bottom: 10px;
+    }
+}
+
+/* Tablet Responsive */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Navbar */
+    nav {
+        background-color: var(--navbar-bg-color);
+        padding: 20px 0px 10px 13px;
+        display: flex;
+        align-items: center;
+        position: relative; 
+    }
+
+    .navbar-ul {
+        display: flex;
+        align-items: center; 
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        width: 98%; 
+        justify-content: space-between;
+    }
+
+        /* Navbar hamburguer menu */
+    .hamb-menu {
+        height: 50px;
+        width: 40px;
+        position: relative;
+        z-index: 3;
+
+    }
+
+    .hamb-menu span {
+        height: 5px;
+        width: 100%;
+        background-color: var(--hamburguer-bg-color);
+        border-radius: 25px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        transition: .3s ease;
+    }
+
+    .hamb-menu span:nth-child(1) {
+        top: 25%;
+    }
+
+    .hamb-menu span:nth-child(3) {
+        top: 75%;
+    }
+
+    .hamb-menu.active span {
+        background-color: var(--navbar-bg-color);
+    }
+
+    .hamb-menu.active span:nth-child(1) {
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .hamb-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamb-menu.active span:nth-child(3) {
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    .off-screen-menu {
+        background-color: var(--hamburguer-bg-color);
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        right: -100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 3rem;
+        transition: right 0.3s ease; 
+        z-index: 1;
+    }
+
+    .off-screen-menu.active {
+        right: 0;
+    }
+
+    .off-screen-menu a {
+        text-decoration: none;
+        color: var(--navbar-bg-color);
+    }
+
+    .no-scroll {
+        overflow: hidden;
+    }
+
+    /* Main */
+        /* Information about film */
+    .title-main>img {
+        display: flex;
+        width: 400px;
+        padding: 10px;
+        z-index: -1;
+        margin: 0 auto;
+    }
+
+    .title-main .name-film,
+    .cast span,
+    .reviews span {
+        font-size: 200%;
+    }
+    .title-main{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .title-main span,
+    .about span,
+    .cast span,
+    .reviews span {
+        color: var(--navbar-bg-color);
+        font-weight: bolder;
+    }
+
+    .title-main .year {
+        color: #A4907C;
+    }
+
+    .about {
+        margin-bottom: 40px;
+        margin-left: 10px;
+    }
+    .synopsis p {
+        width: 49em;
+    }
+
+    /* Information film cast*/
+    .cast {
+        background-color: #DFD7BF;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 40px;
+    }
+    .cast-header, .header-reviews, .contact {
+        margin-left: 10px;
+    }
+
+    .cast button,
+    .reviews button {
+        height: 30px;
+        width: 90px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        background-color: var(--navbar-bg-color);
+        color: white;
+        margin-top: 20px;
+        font-size: 15px;
+        margin-left: 7px;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+        /* Card film cast*/
+    .card-carousel {
+        display: flex;
+        padding: 10px;
+        margin-left: 10px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 2em;
+    }
+
+    .card-content {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        transition: transform .3s ease-in-out;
+    }
+
+    .card-content span {
+        font-size: 115%;
+    }
+
+    .card-content .card-artist p {
+        text-align: center;
+    }
+
+        /* Review Information */
+    .reviews .header-reviews {
+        margin-bottom: 10px;
+    }
+    .card-note{
+        width: 100%;
+    }
+    .card-review {
+        background-color: #DFD7BF;
+        margin-left: 20px;
+        padding: 10px;
+        width: 90%;
+        border-radius: 20px;
+        margin-bottom: 20px;
+    }
+
+    .card-people {
+        width: 100%;
+        padding-top: 10px;
+    }
+
+    .card-people .name {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .card-people .name span {
+        font-size: 110%;
+    }
+
+    .card-people .review-complement {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .review-complement .rating {
+        position: relative;
+        top: -20px;
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--navbar-bg-color);
+    }
+
+    .img-footer {
+        margin-bottom: 17px;
+        padding-top: 20px;
+        padding-left: 13px;
+    }
+
+    .info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+    }
+
+    .contact ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .contact ul li {
+        width: 30%;
+        margin-bottom: 10px;
+    }
+
+    .contact ul li:nth-child(3n) {
+        margin-right: 0;
+    }
+
+    .contact li {
+        color: white;
+        text-decoration: none;
+    }
+
+}
+
+/* Computer Responsive */
+@media (min-width: 1024px) {
+
+    /* Navbar */
+    nav {
+        padding: 20px 40px;
+        background-color: #3F2305;
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 40px;
+    }
+
+        /* Navbar hamburguer menu */
+    .hamb-menu {
+        display: none;
+    }
+
+    .off-screen-menu li {
+        display: inline-block;
+        padding-top: 20px;
+        padding-right: 20px;
+    }
+
+    .off-screen-menu li>a {
+        text-decoration: none;
+        color: white;
+    }
+
+    /* Main */
+        /* Information about film */
+    .about-main {
+        display: flex;
+    }
+
+    .title-main {
+        display: flex;
+    }
+
+    .title-main>img {
+        width: 400px;
+        margin-left: 40%;
+    }
+
+    .title-main p {
+        display: inline-table;
+    }
+
+    .title-main .name-film,
+    .cast-header {
+        font-weight: bolder;
+        color: var(--navbar-bg-color);
+        font-size: 200%;
+    }
+
+    .title-main .year {
+        color: #A4907C;
+    }
+
+    .about {
+        position: relative;
+        margin-top: 3em;
+        left: 4em;
+        margin-bottom: 40px;
+    }
+
+    .about span {
+        font-weight: bolder;
+        color: var(--navbar-bg-color);
+    }
+
+    /* Information film cast*/
+    .cast {
+        background-color: #DFD7BF;
+        margin-bottom: 40px;
+    }
+
+    .cast-header {
+        position: relative;
+        left: 12%;
+    }
+
+    .reviews {
+        width: 100%;
+    }
+
+    .header-reviews {
+        margin-left: 14.5em;
+        margin-bottom: 20px;
+    }
+
+    .header-reviews span {
+        font-weight: bolder;
+        color: var(--navbar-bg-color);
+        font-size: 30px;
+    }
+
+        /* Card film cast*/
+    .card-note {
+        display: flex;
+        width: 90em;
+        margin-bottom: 40px;
+        margin-left: 10%;
+    }
+
+    .card-review {
+        background-color: #DFD7BF;
+        padding: 15px;
+        margin-left: 2%;
+        border-radius: 20px;
+    }
+
+    .card-people span {
+        font-weight: bolder;
+        color: var(--navbar-bg-color);
+        font-size: 20px;
+        margin-top: 10;
+        margin-bottom: 10px;
+    }
+    
+        /* Review Information */
+    .review-complement {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .review-complement .rating {
+        position: relative;
+        top: -6px;
+    }
+
+    .cast button,
+    .reviews button {
+        height: 30px;
+        width: 90px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        background-color: var(--navbar-bg-color);
+        color: white;
+        margin-top: 20px;
+        font-size: 15px;
+        margin-left: 7px;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .card-carousel {
+        display: flex;
+        padding: 10px;
+        margin-left: 12em;
+        margin-right: 15em;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 2em;
+    }
+
+    .card-content {
+        flex: 0 0 12em;
+        scroll-snap-align: start;
+        transition: transform .3s ease-in-out;
+        max-width: 25%;
+        margin-right: 30px;
+    }
+    .synopsis p {
+        width: 68em;
+    }
+
+    .card-content span {
+        font-size: 115%;
+        font-weight: bolder;
+        color: var(--navbar-bg-color);
+    }
+
+    .card-content .card-artist p {
+        text-align: center;
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--navbar-bg-color);
+        padding: 30px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        display: flex;
+    }
+
+    .img-footer {
+        margin-bottom: 30px;
+        padding: 30px;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .contact ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .contact ul li {
+        width: 30%;
+        margin-bottom: 10px;
+    }
+
+    .contact ul li:nth-child(3n) {
+        margin-right: 0;
+    }
+
+    .contact li {
+        color: white;
+        text-decoration: none;
+    }
+}
